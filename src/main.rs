@@ -419,6 +419,9 @@ impl Kopium {
         if results.iter().any(|o| o.contains_conditions()) && !self.no_condition {
             println!("    pub use k8s_openapi::apimachinery::pkg::apis::meta::v1::Condition;");
         }
+        if results.iter().any(|o| o.contains_ref()) {
+            println!("    pub use k8s_openapi::api::core::v1::ObjectReference;");
+        }
         println!("}}");
         println!("use self::prelude::*;\n");
     }
